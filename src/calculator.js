@@ -43,6 +43,43 @@ function div(nums) {
   return nums.slice(1).reduce((a, b) => a / b, nums[0]);
 }
 
+// Returns the remainder of a divided by b
+// Accepts two numeric arguments.
+function modulo(a, b) {
+  const x = Number(a);
+  const y = Number(b);
+  if (!Number.isFinite(x) || !Number.isFinite(y)) {
+    throw new Error('Both operands must be valid numbers.');
+  }
+  if (y === 0) {
+    throw new Error('Division by zero');
+  }
+  return x % y;
+}
+
+// Returns base raised to exponent
+// Accepts two numeric arguments.
+function power(base, exponent) {
+  const b = Number(base);
+  const e = Number(exponent);
+  if (!Number.isFinite(b) || !Number.isFinite(e)) {
+    throw new Error('Base and exponent must be valid numbers.');
+  }
+  return Math.pow(b, e);
+}
+
+// Returns the square root of n. Throws for negative input.
+function squareRoot(n) {
+  const v = Number(n);
+  if (!Number.isFinite(v)) {
+    throw new Error('Operand must be a valid number.');
+  }
+  if (v < 0) {
+    throw new Error('Cannot take square root of negative number');
+  }
+  return Math.sqrt(v);
+}
+
 if (require.main === module) {
   const [,, rawCmd, ...rawArgs] = process.argv;
 
@@ -121,4 +158,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { add, sub, mul, div, toNumbers };
+module.exports = { add, sub, mul, div, modulo, power, squareRoot, toNumbers };
